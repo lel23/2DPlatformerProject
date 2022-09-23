@@ -6,17 +6,20 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public TextMeshProUGUI text;
-    public int score;
+    public static UIManager instance;
 
-    void Start()
+    public TextMeshProUGUI text;
+    public int bloodCount;
+
+    private void Awake()
     {
-        
+        instance = this;
+        text.text = bloodCount.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DecreaseBlood(int blood)
     {
-        
+        bloodCount -= blood;
+        text.text = bloodCount.ToString();
     }
 }
