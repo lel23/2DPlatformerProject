@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
         Debug.Log(grounded);
         rb2d.velocity = vel;
 
+        // on death here we use uimanager to update the view on bloodcount
         if (Input.GetKeyDown(KeyCode.R))
         {
             Instantiate(effect, transform.position, new Quaternion(90, 0, 0, 1));
