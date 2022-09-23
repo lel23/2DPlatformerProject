@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     public float jumpForce;
     public bool grounded = false;
     public bool crouched = false;
-    public bool dead = false;
 
     [Header("Grounding")]
     public LayerMask ground;
@@ -64,7 +63,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Instantiate(effect, transform.position, Quaternion.identity);
+            Instantiate(effect, transform.position, new Quaternion(90, 0, 0, 1));
             Instantiate(bloodSplash, transform.position, Quaternion.identity);
             blood -= 50;
             transform.position = startPos;
