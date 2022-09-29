@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Square
+  m_Name: tiles_spritesheet.png(1)_2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: a665fd0d65b16e44abd1220ea0030a55, type: 3}
+  m_Sprite: {fileID: -2010332119, guid: 9d3085fcca00c0649a368f67d1a52f6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
