@@ -20,7 +20,7 @@ public class Obstacle : MonoBehaviour
     {
         if (other.collider.tag == "Player")
         {
-            other.gameObject.GetComponent<LesliePlayer>().OnDeath();
+            other.gameObject.GetComponent<YurikaPlayer>().OnDeath();
         }
     }
 }
