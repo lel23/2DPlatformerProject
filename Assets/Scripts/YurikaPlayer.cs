@@ -33,10 +33,6 @@ public class YurikaPlayer : MonoBehaviour
     float frameTimer;
 
     public Sprite[] framesBlood;
-    // public Sprite side;
-    // public Sprite crouch;
-    // public Sprite jump;
-
     public GameObject bloodSplash;
 
     [Header("Audio")]
@@ -76,10 +72,9 @@ public class YurikaPlayer : MonoBehaviour
 
         bloodSr.sprite = framesBlood[(int)livesLost];
 
-        // on death here we use uimanager to update the view on bloodcount
+        // REMOVE WHEN OUT OF DEVELOPMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (Input.GetKeyDown(KeyCode.R))
         {
-            //Instantiate(effect, transform.position, new Quaternion(90, 0, 0, 1));
             OnDeath();
         }
         else if (Input.GetKeyDown(KeyCode.T))
@@ -91,25 +86,6 @@ public class YurikaPlayer : MonoBehaviour
         {
             sr.sprite = still;
         }
-
-        //if (rb2d.velocity.x > 0) // Moving right
-        //{
-        //    sr.flipX = false;
-
-        //    frameTimer -= Time.deltaTime;
-
-        //    if (frameTimer <= 0)
-        //    {
-        //        currentFrameIndexLeftRight++;
-        //        if (currentFrameIndexLeftRight == 5)
-        //        {
-        //            currentFrameIndexLeftRight = 0;
-        //        }
-
-        //        frameTimer = (1f / framesPerSecond);
-        //        sr.sprite = framesRightLeft[currentFrameIndexLeftRight];
-        //    }
-        //}
 
         if (rb2d.velocity.x < 0 || rb2d.velocity.x > 0) // Moving left or right
         {
@@ -133,7 +109,7 @@ public class YurikaPlayer : MonoBehaviour
             }
         }
 
-        if (rb2d.velocity.y > 0 || rb2d.velocity.y < 0) // Jumping
+        if (!grounded) // Jumping
         {
             sr.sprite = jumpFall;
         }
