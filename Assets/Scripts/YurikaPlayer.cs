@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class YurikaPlayer : MonoBehaviour
 {
     public float blood = 100;
-    private float livesLost;
+    public static float livesLost;
     private Vector3 startPos;
 
     [Header("Movement")]
