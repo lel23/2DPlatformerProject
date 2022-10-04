@@ -39,6 +39,8 @@ public class YurikaPlayer : MonoBehaviour
     private AudioSource source;
     public AudioClip jumpSound;
 
+    private bool isDead = false;
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -55,6 +57,12 @@ public class YurikaPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDead)
+        {
+            rb2d.velocity = new Vector2(0, 0);
+            return;
+        }
+
         Vector2 vel = rb2d.velocity;
         vel.x = Input.GetAxis("Horizontal") * speed;
 
@@ -74,11 +82,12 @@ public class YurikaPlayer : MonoBehaviour
 
         bloodSr.sprite = framesBlood[(int)livesLost];
 
-        // REMOVE WHEN OUT OF DEVELOPMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (Input.GetKeyDown(KeyCode.R))
         {
             StartCoroutine(OnDeath());
         }
+
+        // REMOVE WHEN OUT OF DEVELOPMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         else if (Input.GetKeyDown(KeyCode.T))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -115,6 +124,7 @@ public class YurikaPlayer : MonoBehaviour
         {
             sr.sprite = jumpFall;
         }
+            
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -130,12 +140,16 @@ public class YurikaPlayer : MonoBehaviour
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
         Instantiate(bloodSplash, transform.position, Quaternion.identity);
         livesLost++;
-        transform.localScale = new Vector3(0, 0, 0);
+        sr.enabled = false;
+        bloodSr.enabled = false;
+        isDead = true;
 
         yield return new WaitForSeconds(1);
 
-        transform.localScale = new Vector3(1, 1, 1);
+        sr.enabled = true;
+        bloodSr.enabled = true;
         transform.position = startPos;
+        isDead = false;
         if (livesLost > 5)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
