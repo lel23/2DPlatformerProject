@@ -9,19 +9,19 @@ public class YurikaPlayer : MonoBehaviour
     public static float livesLost;
     private Vector3 startPos;
 
-    [Header("Movement")]
+    // MOVEMMENT
     private Rigidbody2D rb2d;
     public float speed;
     public float jumpForce;
     public bool crouched = false;
 
-    [Header("Grounding")]
+    // GROUNDING
     public bool grounded = false;
     public LayerMask ground;
     public Transform groundCheckPoint;
     public float groundCheckRadius;
 
-    [Header("Animation")]
+    // ANIMATION
     private SpriteRenderer sr;
     public SpriteRenderer bloodSr;
 
@@ -35,7 +35,7 @@ public class YurikaPlayer : MonoBehaviour
     public Sprite[] framesBlood;
     public GameObject bloodSplash;
 
-    [Header("Audio")]
+    // AUDIO
     private AudioSource source;
     public AudioClip jumpSound;
 
@@ -55,35 +55,33 @@ public class YurikaPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        ///////////// MOVEMENT
         Vector2 vel = rb2d.velocity;
-        vel.x = Input.GetAxis("Horizontal") * speed;
 
-        grounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, ground);
-        // Debug.Log(grounded);
+        if (Input.GetKey(KeyCode.LeftArrow)) vel.x = (-1) * speed;
+        else if (Input.GetKey(KeyCode.RightArrow)) vel.x = speed;
+        else vel.x = 0;
 
-        bool inputJump1 = Input.GetKeyDown(KeyCode.Space);
-        bool inputJump2 = Input.GetKeyDown(KeyCode.UpArrow);
-        if ((inputJump1 || inputJump2) && grounded)
+        bool inputJump = Input.GetKeyDown(KeyCode.UpArrow);
+        if (inputJump && grounded)
         {
             vel.y = jumpForce;
             source.clip = jumpSound;
             source.Play();
         }
-
         rb2d.velocity = vel;
 
+        grounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, ground);
+        // Debug.Log(grounded);
+
+        // kys
+        if (Input.GetKeyDown(KeyCode.Space)) StartCoroutine(OnDeath());
+        // REMOVE WHEN OUT OF DEVELOPMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        else if (Input.GetKeyDown(KeyCode.T)) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        ///////////// ANIMATION
         bloodSr.sprite = framesBlood[(int)livesLost];
-
-        // REMOVE WHEN OUT OF DEVELOPMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            StartCoroutine(OnDeath());
-        }
-        else if (Input.GetKeyDown(KeyCode.T))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-
         if (rb2d.velocity.x == 0 && rb2d.velocity.y == 0)
         {
             sr.sprite = still;
@@ -115,6 +113,7 @@ public class YurikaPlayer : MonoBehaviour
         {
             sr.sprite = jumpFall;
         }
+            
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -130,11 +129,12 @@ public class YurikaPlayer : MonoBehaviour
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
         Instantiate(bloodSplash, transform.position, Quaternion.identity);
         livesLost++;
-        transform.localScale = new Vector3(0, 0, 0);
-
+        sr.enabled = false;
+        bloodSr.enabled = false;
         yield return new WaitForSeconds(1);
 
-        transform.localScale = new Vector3(1, 1, 1);
+        sr.enabled = true;
+        bloodSr.enabled = true;
         transform.position = startPos;
         if (livesLost > 5)
         {
