@@ -5,24 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public string levelzero;
-    public GameObject credits;
-
-    public void StartGame()
+    public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void OpenCredits()
-    {
-    }
-    public void CloseCredits()
-    {
-    }
-
     public void QuitGame()
     {
+        Debug.Log("Quit!");
         Application.Quit();
-        Debug.Log("quit");
     }
 }

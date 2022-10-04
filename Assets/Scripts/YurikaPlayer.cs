@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class YurikaPlayer : MonoBehaviour
 {
-    public float blood = 100;
     public static float livesLost;
     private Vector3 startPos;
 
@@ -76,7 +75,7 @@ public class YurikaPlayer : MonoBehaviour
         // REMOVE WHEN OUT OF DEVELOPMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (Input.GetKeyDown(KeyCode.R))
         {
-            OnDeath();
+            StartCoroutine(OnDeath());
         }
         else if (Input.GetKeyDown(KeyCode.T))
         {
@@ -116,16 +115,29 @@ public class YurikaPlayer : MonoBehaviour
         }
     }
 
-    public void OnDeath()
+    private void OnCollisionEnter2D(Collision2D other)
     {
+        if (other.collider.tag == "Obstacle")
+        {
+            StartCoroutine(OnDeath());
+        }
+    }
+
+    public IEnumerator OnDeath()
+    {
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
         Instantiate(bloodSplash, transform.position, Quaternion.identity);
-        blood -= 50;
-        transform.position = startPos;
         livesLost++;
+        transform.localScale = new Vector3(0, 0, 0);
+
+        yield return new WaitForSeconds(1);
+
+        transform.localScale = new Vector3(1, 1, 1);
+        transform.position = startPos;
         if (livesLost > 5)
         {
-            livesLost = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 }

@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 1184461587300920297}
   - component: {fileID: 380760784075094292}
   - component: {fileID: 9168674902152852691}
-  - component: {fileID: 3137695753146921109}
   m_Layer: 0
   m_Name: spikesMedium
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,15 +169,3 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
---- !u!114 &3137695753146921109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6803796287770933201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0af47d134a9f94949938f87205f4294a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

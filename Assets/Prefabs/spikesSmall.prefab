@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 4371354865585528819}
   - component: {fileID: 1483699889157517435}
   - component: {fileID: 4837537945440351665}
-  - component: {fileID: 2630826789060176133}
   - component: {fileID: 8351975261678506638}
   m_Layer: 0
   m_Name: spikesSmall
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,18 +118,6 @@ PolygonCollider2D:
       - {x: -0.23333067, y: 0.017482549}
       - {x: -0.36423144, y: -0.37813437}
       - {x: 0.36309385, y: -0.37863111}
---- !u!114 &2630826789060176133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4344524746637144954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0af47d134a9f94949938f87205f4294a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!331 &8351975261678506638
 SpriteMask:
   m_ObjectHideFlags: 0
