@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraYurika : MonoBehaviour
 {
     public GameObject player;
-    private Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +15,6 @@ public class CameraYurika : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, player.transform.position.y, -10);
+        transform.position = new Vector3(transform.position.x, player.transform.position.y+3.5f, -10);
     }
 }
