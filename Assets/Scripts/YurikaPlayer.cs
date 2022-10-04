@@ -66,6 +66,8 @@ public class YurikaPlayer : MonoBehaviour
         if ((inputJump1 || inputJump2) && grounded)
         {
             vel.y = jumpForce;
+            source.clip = jumpSound;
+            source.Play();
         }
 
         rb2d.velocity = vel;
