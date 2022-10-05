@@ -8,6 +8,7 @@ public class YurikaPlayer : MonoBehaviour
 {
     public static float livesLost;
     private Vector3 startPos;
+    private bool isDead;
 
     // MOVEMMENT
     private Rigidbody2D rb2d;
@@ -41,6 +42,7 @@ public class YurikaPlayer : MonoBehaviour
 
     void Start()
     {
+        isDead = false;
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         source = GetComponent<AudioSource>();
@@ -120,7 +122,11 @@ public class YurikaPlayer : MonoBehaviour
     {
         if (other.collider.tag == "Obstacle")
         {
-            StartCoroutine(OnDeath());
+            if (!isDead)
+            {
+                isDead = true;
+                StartCoroutine(OnDeath());
+            }
         }
 
     }
@@ -141,7 +147,8 @@ public class YurikaPlayer : MonoBehaviour
     {
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
         Instantiate(bloodSplash, transform.position, Quaternion.identity);
-        livesLost++;
+        if (isDead)
+            livesLost++;
         sr.enabled = false;
         bloodSr.enabled = false;
         yield return new WaitForSeconds(1);
@@ -149,6 +156,7 @@ public class YurikaPlayer : MonoBehaviour
         sr.enabled = true;
         bloodSr.enabled = true;
         transform.position = startPos;
+        isDead = false;
         if (livesLost > 5)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
