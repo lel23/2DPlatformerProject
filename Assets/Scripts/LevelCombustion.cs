@@ -33,8 +33,6 @@ public class LevelCombustion : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         platform1.SetActive(true);
-       
-        Debug.Log(platform1.activeSelf);
         platform2.SetActive(true);
 
         StartCoroutine(FadeImage(true));
