@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2427531699911599840}
   - component: {fileID: 6116641226471356863}
+  - component: {fileID: 5356626986315258693}
   m_Layer: 0
   m_Name: SplatImage
   m_TagString: Untagged
@@ -84,3 +85,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!114 &5356626986315258693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000268883181149908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bdddcc124fb4898b665ef5b8147d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
