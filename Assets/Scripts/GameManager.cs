@@ -52,12 +52,6 @@ public class GameManager : MonoBehaviour
         source.PlayOneShot(splat);
     }
 
-    public void LevelSelect()
-    {
-        SceneManager.LoadScene("LevelSelect");
-        source.PlayOneShot(splat);
-    }
-
     public void QuitGame()
     {
         Debug.Log("Quit!");
