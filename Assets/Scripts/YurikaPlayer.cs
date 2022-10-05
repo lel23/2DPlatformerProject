@@ -122,6 +122,19 @@ public class YurikaPlayer : MonoBehaviour
         {
             StartCoroutine(OnDeath());
         }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Replenish"))
+        {
+            if (livesLost > 0)
+            {
+                livesLost--;
+                Destroy(other.gameObject);
+            }
+        }
     }
 
     public IEnumerator OnDeath()
