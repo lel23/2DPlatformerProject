@@ -78,7 +78,11 @@ public class YurikaPlayer : MonoBehaviour
         // Debug.Log(grounded);
 
         // kys
-        if (Input.GetKeyDown(KeyCode.Space)) StartCoroutine(OnDeath());
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isDead = true;
+            StartCoroutine(OnDeath());
+        }
         // REMOVE WHEN OUT OF DEVELOPMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         else if (Input.GetKeyDown(KeyCode.T)) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
