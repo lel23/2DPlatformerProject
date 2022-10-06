@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 703990018431793735}
   - component: {fileID: 703990018431793734}
   - component: {fileID: 703990018431793729}
+  - component: {fileID: 2068316143688838621}
   m_Layer: 6
   m_Name: Square (1)
   m_TagString: Untagged
@@ -156,13 +157,34 @@ SpriteMask:
   m_Sprite: {fileID: 936572872, guid: 9d3085fcca00c0649a368f67d1a52f6e, type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
-  m_BackSortingLayerID: 0
+  m_BackSortingLayerID: -695413451
   m_FrontSortingLayer: 0
-  m_BackSortingLayer: 0
+  m_BackSortingLayer: -1
   m_FrontSortingOrder: 0
   m_BackSortingOrder: 0
-  m_IsCustomRangeActive: 0
+  m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
+--- !u!50 &2068316143688838621
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703990018431793731}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &703990018876928248
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,6 +197,7 @@ GameObject:
   - component: {fileID: 703990018876928249}
   - component: {fileID: 703990018876928252}
   - component: {fileID: 703990018876928255}
+  - component: {fileID: 1824921423929610403}
   m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
@@ -319,13 +342,34 @@ SpriteMask:
   m_Sprite: {fileID: 936572872, guid: 9d3085fcca00c0649a368f67d1a52f6e, type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
-  m_BackSortingLayerID: 0
+  m_BackSortingLayerID: -695413451
   m_FrontSortingLayer: 0
-  m_BackSortingLayer: 0
+  m_BackSortingLayer: -1
   m_FrontSortingOrder: 0
   m_BackSortingOrder: 0
-  m_IsCustomRangeActive: 0
+  m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
+--- !u!50 &1824921423929610403
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703990018876928248}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &703990019390118813
 GameObject:
   m_ObjectHideFlags: 0
