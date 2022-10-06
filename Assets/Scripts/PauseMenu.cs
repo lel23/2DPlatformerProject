@@ -5,19 +5,54 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu: MonoBehaviour
 {
-    public void PlayGame()
+    public GameObject menuUI;
+    private AudioSource source;
+    public AudioClip splat;
+    public static bool paused = false;
+
+    void Start()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        menuUI.gameObject.SetActive(false);
+        source = GetComponent<AudioSource>();
     }
 
-    public void LevelSelect()
+    // Update is called once per frame
+    void Update()
     {
-        SceneManager.LoadScene("LevelSelect");
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (paused) Resume();
+            else Pause();
+        }
+    }
+
+    void Pause()
+    {
+        Debug.Log("pause!");
+        paused = true;
+        Time.timeScale = 0.0f;
+        menuUI.gameObject.SetActive(true);
+    }
+
+    public void Resume()
+    {
+        Debug.Log("resume!");
+        paused = false;
+        Time.timeScale = 1f;
+        menuUI.gameObject.SetActive(false);
+    }
+
+    public void MainMenu()
+    {
+        Debug.Log("mainmenu!");
+        // SceneManager.LoadScene("MainMenu");
+        source.PlayOneShot(splat);
     }
 
     public void QuitGame()
     {
         Debug.Log("Quit!");
+        source.PlayOneShot(splat);
         Application.Quit();
     }
 }
