@@ -87,7 +87,8 @@ public class YurikaPlayer : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.T)) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         ///////////// ANIMATION
-        bloodSr.sprite = framesBlood[(int)livesLost];
+        if (livesLost >= 0 && livesLost <= 5)
+            bloodSr.sprite = framesBlood[(int)livesLost];
         if (rb2d.velocity.x == 0 && rb2d.velocity.y == 0)
         {
             sr.sprite = still;
@@ -163,6 +164,7 @@ public class YurikaPlayer : MonoBehaviour
         isDead = false;
         if (livesLost > 5)
         {
+            livesLost = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
