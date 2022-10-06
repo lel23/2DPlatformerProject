@@ -38,6 +38,8 @@ public class YurikaPlayer : MonoBehaviour
     // AUDIO
     private AudioSource source;
     public AudioClip jumpSound;
+    public AudioClip bloodSound;
+    public AudioClip backgroundSound;
 
     void Start()
     {
@@ -51,6 +53,9 @@ public class YurikaPlayer : MonoBehaviour
 
         frameTimer = (1f / framesPerSecond);
         currentFrameIndexLeftRight = 0;
+
+        source.clip = backgroundSound;
+        source.Play();
     }
 
     // Update is called once per frame
@@ -69,8 +74,7 @@ public class YurikaPlayer : MonoBehaviour
         if (inputJump && grounded)
         {
             vel.y = jumpForce;
-            source.clip = jumpSound;
-            source.Play();
+            source.PlayOneShot(jumpSound);
         }
         rb2d.velocity = vel;
 
@@ -148,6 +152,8 @@ public class YurikaPlayer : MonoBehaviour
 
     public IEnumerator OnDeath()
     {
+        source.PlayOneShot(bloodSound);
+
         Instantiate(bloodSplash, transform.position, Quaternion.identity);
         livesLost++;
 
