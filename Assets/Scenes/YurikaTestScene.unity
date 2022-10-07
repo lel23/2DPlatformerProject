@@ -299,6 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 724667875}
+  verticalOnly: 0
 --- !u!81 &554568554
 AudioListener:
   m_ObjectHideFlags: 0
@@ -550,7 +551,11 @@ PrefabInstance:
     - target: {fileID: -8930348713109390301, guid: 7a46ac2678e2348d89d46f91a0e04324, type: 3}
       propertyPath: jumpSound
       value: 
-      objectReference: {fileID: 8300000, guid: c0c8ed82f2e1dff43bea6fc7f5d729ce, type: 3}
+      objectReference: {fileID: 8300000, guid: 6a758b8fc4260294b9be53cd1dbc961b, type: 3}
+    - target: {fileID: -8930348713109390301, guid: 7a46ac2678e2348d89d46f91a0e04324, type: 3}
+      propertyPath: bloodSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5039b4cd5f4a0714e9bb89037ca7b1db, type: 3}
     - target: {fileID: -8930348713109390301, guid: 7a46ac2678e2348d89d46f91a0e04324, type: 3}
       propertyPath: bloodSplash
       value: 
@@ -559,6 +564,10 @@ PrefabInstance:
       propertyPath: ground.m_Bits
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: -8930348713109390301, guid: 7a46ac2678e2348d89d46f91a0e04324, type: 3}
+      propertyPath: backgroundSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 28efd7763824cba48b227ce24f72a32f, type: 3}
     - target: {fileID: -8930348713109390301, guid: 7a46ac2678e2348d89d46f91a0e04324, type: 3}
       propertyPath: groundCheckPoint
       value: 
@@ -3199,7 +3208,7 @@ Transform:
   - {fileID: 809660452}
   - {fileID: 1801690925}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1759253221
 GameObject:
@@ -3244,7 +3253,7 @@ Transform:
   m_Children:
   - {fileID: 1593249391}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1801690924
 GameObject:

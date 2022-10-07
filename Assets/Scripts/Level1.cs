@@ -9,7 +9,7 @@ public class Level1 : MonoBehaviour
     public Image imgLeftKey;
     public Image imgUpKey;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         imgRightKey.color = new Color(1, 1, 1, 0);
@@ -18,10 +18,9 @@ public class Level1 : MonoBehaviour
         StartCoroutine(FadeImage(true));
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (YurikaPlayer.livesLost == 1)
+        if (YurikaPlayer.livesLost == 1) // Once player dies, they learn how to jump
         {
             StartCoroutine(FadeImage(false));
         }
@@ -29,7 +28,7 @@ public class Level1 : MonoBehaviour
 
     IEnumerator FadeImage(bool isBeginning)
     {
-        if (isBeginning)
+        if (isBeginning) // Fade in arrow key instructions
         { for (float i = 0; i <= 3; i += Time.deltaTime)
             {
                 imgRightKey.color = new Color(1, 1, 1, i);
@@ -38,7 +37,7 @@ public class Level1 : MonoBehaviour
             }
         }
      
-        else
+        else // Fade in up key instruction
         {
             // loop over 1 second
             for (float i = 0; i <= 2; i += Time.deltaTime)

@@ -14,7 +14,6 @@ public class YurikaPlayer : MonoBehaviour
     private Rigidbody2D rb2d;
     public float speed;
     public float jumpForce;
-    public bool crouched = false;
 
     // GROUNDING
     public bool grounded = false;
@@ -62,6 +61,7 @@ public class YurikaPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.paused || isDead) return;
 
         ///////////// MOVEMENT
         Vector2 vel = rb2d.velocity;
@@ -91,7 +91,8 @@ public class YurikaPlayer : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.T)) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         ///////////// ANIMATION
-        bloodSr.sprite = framesBlood[(int)livesLost];
+        if (livesLost >= 0 && livesLost <= 5)
+            bloodSr.sprite = framesBlood[(int)livesLost];
         if (rb2d.velocity.x == 0 && rb2d.velocity.y == 0)
         {
             sr.sprite = still;
@@ -119,10 +120,8 @@ public class YurikaPlayer : MonoBehaviour
             }
         }
 
-        if (!grounded) // Jumping
-        {
-            sr.sprite = jumpFall;
-        }
+        // jumping animation
+        if (!grounded) sr.sprite = jumpFall;
             
     }
 
@@ -154,10 +153,10 @@ public class YurikaPlayer : MonoBehaviour
     public IEnumerator OnDeath()
     {
         source.PlayOneShot(bloodSound);
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
         Instantiate(bloodSplash, transform.position, Quaternion.identity);
-        if (isDead)
-            livesLost++;
+        livesLost++;
+
         sr.enabled = false;
         bloodSr.enabled = false;
         yield return new WaitForSeconds(1);
@@ -165,11 +164,12 @@ public class YurikaPlayer : MonoBehaviour
         sr.enabled = true;
         bloodSr.enabled = true;
         transform.position = startPos;
+
         isDead = false;
         if (livesLost > 5)
         {
+            livesLost = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 }
