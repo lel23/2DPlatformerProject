@@ -44,7 +44,7 @@ public class PauseMenu: MonoBehaviour
 
     public void MainMenu()
     {
-        paused = false;
+        Resume();
         Debug.Log("mainmenu!");
         SceneManager.LoadScene("MainMenu");
         source.PlayOneShot(splat);
@@ -52,7 +52,7 @@ public class PauseMenu: MonoBehaviour
 
     public void QuitGame()
     {
-        paused = false;
+        Resume();
         Debug.Log("Quit!");
         source.PlayOneShot(splat);
         Application.Quit();
