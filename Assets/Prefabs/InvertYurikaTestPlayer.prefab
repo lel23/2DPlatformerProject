@@ -235,8 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f94cf15bcac549fbae15c1b09864f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalPlayer: {fileID: 4282279057587718480, guid: 7a46ac2678e2348d89d46f91a0e04324, type: 3}
   speed: 8
-  jumpForce: 29
+  jumpForce: 10000
   grounded: 0
   ground:
     serializedVersion: 2

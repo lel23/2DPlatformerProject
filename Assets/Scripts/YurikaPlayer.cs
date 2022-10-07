@@ -10,6 +10,8 @@ public class YurikaPlayer : MonoBehaviour
     private Vector3 startPos;
     private bool isDead;
     public static bool isInSecretLevel;
+    public static bool hasPartyHat;
+    public GameObject partyHat;
 
     // MOVEMMENT
     private Rigidbody2D rb2d;
@@ -54,6 +56,7 @@ public class YurikaPlayer : MonoBehaviour
         startPos = transform.position;
         livesLost = 0;
         isInSecretLevel = false;
+        hasPartyHat = false;
 
         frameTimer = (1f / framesPerSecond);
         currentFrameIndexLeftRight = 0;
@@ -140,7 +143,10 @@ public class YurikaPlayer : MonoBehaviour
         // jumping animation
         if (!grounded) sr.sprite = jumpFall;
 
-            
+        if (hasPartyHat)
+        {
+            partyHat.SetActive(true);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -172,10 +178,15 @@ public class YurikaPlayer : MonoBehaviour
             isInSecretLevel = true;
             
         }
-        if (other.gameObject.CompareTag("ExitSecret"))
-        {
-            isInSecretLevel = false;
-        }
+        //if (other.gameObject.CompareTag("ExitSecret"))
+        //{
+        //    isInSecretLevel = false;
+        //}
+        //if (other.gameObject.CompareTag("ExitSecretFinal"))
+        //{
+        //    isInSecretLevel = false;
+        //    hasPartyHat = true;
+        //}
     }
 
     public IEnumerator OnDeath()
@@ -187,11 +198,15 @@ public class YurikaPlayer : MonoBehaviour
 
         sr.enabled = false;
         bloodSr.enabled = false;
+        if (hasPartyHat)
+            partyHat.GetComponent<SpriteRenderer>().enabled = false;
         rb2d.bodyType = RigidbodyType2D.Static;
         yield return new WaitForSeconds(1);
 
         sr.enabled = true;
         bloodSr.enabled = true;
+        if (hasPartyHat)
+            partyHat.GetComponent<SpriteRenderer>().enabled = true;
         rb2d.bodyType = RigidbodyType2D.Dynamic;
         transform.position = startPos;
 

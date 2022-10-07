@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -66,19 +67,23 @@ public class InvertYurikaPlayer : MonoBehaviour
         if (PauseMenu.paused || isDead) return;
 
         ///////////// MOVEMENT
+      
+
         Vector2 vel = rb2d.velocity;
 
         if (Input.GetKey(KeyCode.LeftArrow)) vel.x = (-1) * speed;
         else if (Input.GetKey(KeyCode.RightArrow)) vel.x = speed;
-        else vel.x = 0;
+        else if (grounded) vel.x = 0;
 
+        rb2d.velocity = vel;
+        // jump with horizontal momentum
         bool inputJump = Input.GetKeyDown(KeyCode.UpArrow);
         if (inputJump && grounded)
         {
-            vel.y = jumpForce;
-            source.PlayOneShot(jumpSound);
+            rb2d.AddForce(new Vector2(0, jumpForce));
+            source.clip = jumpSound;
+            source.Play();
         }
-        rb2d.velocity = vel;
 
         grounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, ground);
         // Debug.Log(grounded);
@@ -146,6 +151,13 @@ public class InvertYurikaPlayer : MonoBehaviour
             YurikaPlayer.isInSecretLevel = false;
             normalPlayer.transform.position = new Vector3(-2.5f, 12.1f, 0);
             transform.position = startPos;
+        }
+        if (other.gameObject.CompareTag("ExitSecretFinal"))
+        {
+            YurikaPlayer.isInSecretLevel = false;
+            normalPlayer.transform.position = new Vector3(-2.5f, 12.1f, 0);
+            transform.position = startPos;
+            YurikaPlayer.hasPartyHat = true;
         }
     }
 
