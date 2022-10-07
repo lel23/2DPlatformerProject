@@ -145,7 +145,7 @@ MonoBehaviour:
   grounded: 0
   ground:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   groundCheckPoint: {fileID: 2990717131197031211}
   groundCheckRadius: 0.2
   platformMask:
