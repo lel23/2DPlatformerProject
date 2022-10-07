@@ -65,7 +65,6 @@ public class YurikaPlayer : MonoBehaviour
         source.Play();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (PauseMenu.paused || isDead) return;
@@ -107,8 +106,6 @@ public class YurikaPlayer : MonoBehaviour
             isDead = true;
             StartCoroutine(OnDeath());
         }
-        // REMOVE WHEN OUT OF DEVELOPMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        else if (Input.GetKeyDown(KeyCode.T)) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         ///////////// ANIMATION
         if (livesLost >= 0 && livesLost <= 5)
