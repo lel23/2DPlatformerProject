@@ -45,7 +45,7 @@ public class PauseMenu: MonoBehaviour
     public void MainMenu()
     {
         Debug.Log("mainmenu!");
-        // SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu");
         source.PlayOneShot(splat);
     }
 

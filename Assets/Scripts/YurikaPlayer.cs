@@ -9,17 +9,20 @@ public class YurikaPlayer : MonoBehaviour
     public static float livesLost;
     private Vector3 startPos;
     private bool isDead;
+    public static bool isInSecretLevel;
 
     // MOVEMMENT
     private Rigidbody2D rb2d;
     public float speed;
     public float jumpForce;
 
-    // GROUNDING
+    // GROUNDING & OnPlatform
     public bool grounded = false;
     public LayerMask ground;
     public Transform groundCheckPoint;
     public float groundCheckRadius;
+    private bool onPlatform = false;
+    public LayerMask platformMask;
 
     // ANIMATION
     private SpriteRenderer sr;
@@ -50,6 +53,7 @@ public class YurikaPlayer : MonoBehaviour
 
         startPos = transform.position;
         livesLost = 0;
+        isInSecretLevel = false;
 
         frameTimer = (1f / framesPerSecond);
         currentFrameIndexLeftRight = 0;
@@ -68,15 +72,28 @@ public class YurikaPlayer : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow)) vel.x = (-1) * speed;
         else if (Input.GetKey(KeyCode.RightArrow)) vel.x = speed;
-        else vel.x = 0;
+        else if (grounded) vel.x = 0;
 
+        // move with moving platform
+        onPlatform = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, platformMask);
+        if (onPlatform)
+        {
+            Collider2D platform = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, platformMask);
+            Vector2 platformVel = platform.gameObject.transform.parent.GetComponent<Rigidbody2D>().velocity;
+            Debug.Log(platformVel);
+            vel += platformVel;
+        }
+
+        rb2d.velocity = vel;
+
+        // jump with horizontal momentum
         bool inputJump = Input.GetKeyDown(KeyCode.UpArrow);
         if (inputJump && grounded)
         {
-            vel.y = jumpForce;
-            source.PlayOneShot(jumpSound);
+            rb2d.AddForce(new Vector2(0, jumpForce));
+            source.clip = jumpSound;
+            source.Play();
         }
-        rb2d.velocity = vel;
 
         grounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, ground);
         // Debug.Log(grounded);
@@ -122,6 +139,7 @@ public class YurikaPlayer : MonoBehaviour
 
         // jumping animation
         if (!grounded) sr.sprite = jumpFall;
+
             
     }
 
@@ -148,6 +166,16 @@ public class YurikaPlayer : MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
+
+        if (other.gameObject.CompareTag("EnterSecret"))
+        {
+            isInSecretLevel = true;
+            
+        }
+        if (other.gameObject.CompareTag("ExitSecret"))
+        {
+            isInSecretLevel = false;
+        }
     }
 
     public IEnumerator OnDeath()
@@ -159,10 +187,12 @@ public class YurikaPlayer : MonoBehaviour
 
         sr.enabled = false;
         bloodSr.enabled = false;
+        rb2d.bodyType = RigidbodyType2D.Static;
         yield return new WaitForSeconds(1);
 
         sr.enabled = true;
         bloodSr.enabled = true;
+        rb2d.bodyType = RigidbodyType2D.Dynamic;
         transform.position = startPos;
 
         isDead = false;

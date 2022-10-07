@@ -141,14 +141,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  jumpForce: 29
-  crouched: 0
+  jumpForce: 10000
   grounded: 0
   ground:
     serializedVersion: 2
     m_Bits: 64
   groundCheckPoint: {fileID: 2990717131197031211}
   groundCheckRadius: 0.2
+  platformMask:
+    serializedVersion: 2
+    m_Bits: 128
   bloodSr: {fileID: 5707226785865898720}
   framesRightLeft:
   - {fileID: 21300000, guid: f919a263ae558421598be044d7bec643, type: 3}
@@ -168,7 +170,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 29bb91879e6f3466b9cc7232c005b1dc, type: 3}
   - {fileID: 21300000, guid: cd33f24eace0f49309d986b7b2c3015c, type: 3}
   bloodSplash: {fileID: 787501009522325121, guid: 7b84d48dabf85483f9442de27b042cfc, type: 3}
-  jumpSound: {fileID: 8300000, guid: c6d803d0d1387b54da41708ba49da6ca, type: 3}
+  jumpSound: {fileID: 8300000, guid: 6a758b8fc4260294b9be53cd1dbc961b, type: 3}
+  bloodSound: {fileID: 8300000, guid: 5039b4cd5f4a0714e9bb89037ca7b1db, type: 3}
+  backgroundSound: {fileID: 8300000, guid: 28efd7763824cba48b227ce24f72a32f, type: 3}
 --- !u!70 &8244778711578700339
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
