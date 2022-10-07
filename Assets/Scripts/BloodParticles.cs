@@ -32,8 +32,9 @@ public class BloodParticles : MonoBehaviour
         {
             Vector3 splatLocation = collisionEvents[i].intersection;
             Quaternion splatAngle = Quaternion.Euler(0, 0, Random.Range(0, 360f));
-            Instantiate(splatPrefab, splatLocation, splatAngle, other.transform);
-            Debug.Log(other.transform);
+            GameObject parent = collisionEvents[i].colliderComponent.gameObject;
+            Instantiate(splatPrefab, splatLocation, splatAngle, parent.transform);
+            //Debug.Log(other.transform);
         }
     }
 }
