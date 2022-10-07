@@ -48,7 +48,6 @@ GameObject:
   - component: {fileID: 2597426264530873734}
   - component: {fileID: 2597426264530873729}
   - component: {fileID: 2597426264530873728}
-  - component: {fileID: 2597426264530873731}
   - component: {fileID: 7630504867949816580}
   m_Layer: 5
   m_Name: MenuButton
@@ -171,19 +170,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2597426264530873731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2597426264530873981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b619015b4f7fc7c4ca25819732977482, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 0}
 --- !u!95 &7630504867949816580
 Animator:
   serializedVersion: 4
@@ -284,7 +270,6 @@ GameObject:
   - component: {fileID: 2597426265427639175}
   - component: {fileID: 2597426265427639174}
   - component: {fileID: 2597426265427639169}
-  - component: {fileID: 2597426265427639168}
   - component: {fileID: 4571120492946312960}
   m_Layer: 5
   m_Name: ResumeButton
@@ -407,19 +392,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2597426265427639168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2597426265427639170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b619015b4f7fc7c4ca25819732977482, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 0}
 --- !u!95 &4571120492946312960
 Animator:
   serializedVersion: 4
@@ -746,7 +718,6 @@ GameObject:
   - component: {fileID: 2597426266291913284}
   - component: {fileID: 2597426266291913287}
   - component: {fileID: 2597426266291913286}
-  - component: {fileID: 2597426266291913281}
   - component: {fileID: 4247893913419041646}
   m_Layer: 5
   m_Name: QuitButton
@@ -869,19 +840,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2597426266291913281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2597426266291913283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b619015b4f7fc7c4ca25819732977482, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 0}
 --- !u!95 &4247893913419041646
 Animator:
   serializedVersion: 4
