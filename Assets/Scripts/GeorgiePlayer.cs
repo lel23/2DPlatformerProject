@@ -20,6 +20,9 @@ public class GeorgiePlayer : MonoBehaviour
     public LayerMask ground;
     public Transform groundCheckPoint;
     public float groundCheckRadius;
+    //changes:
+    public bool onPlatform = false;
+    public LayerMask platformMask;
 
     // ANIMATION
     private SpriteRenderer sr;
@@ -65,6 +68,15 @@ public class GeorgiePlayer : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow)) vel.x = (-1) * speed;
         else if (Input.GetKey(KeyCode.RightArrow)) vel.x = speed;
         else if (grounded) vel.x = 0;
+
+        onPlatform = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, platformMask);
+        if (onPlatform)
+        {
+            Collider2D platform = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, platformMask);
+            Vector2 platformVel = platform.gameObject.transform.parent.GetComponent<Rigidbody2D>().velocity;
+            Debug.Log(platformVel);
+            vel += platformVel;
+        }
 
         rb2d.velocity = vel;
 
@@ -157,10 +169,12 @@ public class GeorgiePlayer : MonoBehaviour
 
         sr.enabled = false;
         bloodSr.enabled = false;
+        rb2d.bodyType = RigidbodyType2D.Static;
         yield return new WaitForSeconds(1);
 
         sr.enabled = true;
         bloodSr.enabled = true;
+        rb2d.bodyType = RigidbodyType2D.Dynamic;
         transform.position = startPos;
 
         isDead = false;
