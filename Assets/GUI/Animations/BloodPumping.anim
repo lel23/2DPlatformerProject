@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BloodFlow
+  m_Name: BloodPumping
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -31,7 +31,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 1.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -51,66 +51,80 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.31666666
-    functionName: set_sprite
+  - time: 0
+    functionName: set_texture
     data: 
-    objectReferenceParameter: {fileID: 2800000, guid: 58f43f7251f51a44aa49d66a81a56aa1, type: 3}
+    objectReferenceParameter: {fileID: 2800000, guid: cf0a2c0dddedfbc4bbf43e206a031b3f, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.13333334
+    functionName: set_texture
+    data: 
+    objectReferenceParameter: {fileID: 2800000, guid: de26b213d819c6d48870539389740270, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.26666668
+    functionName: set_texture
+    data: 
+    objectReferenceParameter: {fileID: 2800000, guid: 93d633c00b43a8d4aa8eec85c116306c, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.4
-    functionName: set_sprite
+    functionName: set_texture
     data: 
-    objectReferenceParameter: {fileID: 2800000, guid: 2c3741a5987479042ad6a5b3b5832124, type: 3}
+    objectReferenceParameter: {fileID: 2800000, guid: 3a32e20f8e19bc24c8bf707be8d8d813, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.46666667
+  - time: 0.53333336
     functionName: set_texture
     data: 
-    objectReferenceParameter: {fileID: 2800000, guid: 5b6ff5421dc7f704cb506be7e6ebc011, type: 3}
+    objectReferenceParameter: {fileID: 2800000, guid: a22dff69123e18c44a88263d853a3b24, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.55
+  - time: 0.6666667
     functionName: set_texture
     data: 
-    objectReferenceParameter: {fileID: 2800000, guid: f30bd44a12c60504f8905116cc67737a, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.6166667
-    functionName: set_texture
-    data: 
-    objectReferenceParameter: {fileID: 2800000, guid: 7501983774d9c8841a55450a2647142e, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.68333334
-    functionName: set_texture
-    data: 
-    objectReferenceParameter: {fileID: 2800000, guid: f432da8068ef98e4f98da39b08af55f1, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.75
-    functionName: set_texture
-    data: 
-    objectReferenceParameter: {fileID: 2800000, guid: f24876d2ef9204742b311daff8fe407d, type: 3}
+    objectReferenceParameter: {fileID: 2800000, guid: 6e5c54d5af08c0840afa31c4589a5b49, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.81666666
     functionName: set_texture
     data: 
-    objectReferenceParameter: {fileID: 2800000, guid: a5ab37d8b43844f4ca48e72890cc3730, type: 3}
+    objectReferenceParameter: {fileID: 2800000, guid: 358f6da2e18fbc847b3bfa80d49d6788, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
+  - time: 0.96666664
     functionName: set_texture
     data: 
-    objectReferenceParameter: {fileID: 2800000, guid: f2e6158e204873843a1c99ca854c6f2a, type: 3}
+    objectReferenceParameter: {fileID: 2800000, guid: ed20df28088b2ce4c9a8f5d20c55b36f, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.1333333
+    functionName: set_texture
+    data: 
+    objectReferenceParameter: {fileID: 2800000, guid: c6aeb80fd305df24dbbfdd921ea85b80, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.2833333
+    functionName: set_texture
+    data: 
+    objectReferenceParameter: {fileID: 2800000, guid: 164854e17c4113249806f2ff934502a2, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5
+    functionName: set_texture
+    data: 
+    objectReferenceParameter: {fileID: 2800000, guid: 164854e17c4113249806f2ff934502a2, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
