@@ -13,11 +13,6 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         text.color = new Color(200, 0, 0);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        text.color = Color.white;
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
         text.color = new Color(155, 0, 0);
