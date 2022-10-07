@@ -141,13 +141,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  jumpForce: 29
+  jumpForce: 10000
   grounded: 0
   ground:
     serializedVersion: 2
     m_Bits: 64
   groundCheckPoint: {fileID: 2990717131197031211}
   groundCheckRadius: 0.2
+  platformMask:
+    serializedVersion: 2
+    m_Bits: 128
   bloodSr: {fileID: 5707226785865898720}
   framesRightLeft:
   - {fileID: 21300000, guid: f919a263ae558421598be044d7bec643, type: 3}
