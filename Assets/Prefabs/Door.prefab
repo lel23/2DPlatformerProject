@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finalLevel: 0
-  doorSound: {fileID: 0}
+  doorSound: {fileID: 8300000, guid: 6c2b8f34f6fc6014e9961d573db3d82f, type: 3}
 --- !u!82 &7050227456185979201
 AudioSource:
   m_ObjectHideFlags: 0

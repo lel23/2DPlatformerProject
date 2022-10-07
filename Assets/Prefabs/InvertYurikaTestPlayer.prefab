@@ -10,13 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4282279057587718477}
   - component: {fileID: 4282279057587718476}
-  - component: {fileID: 4282279057587718483}
   - component: {fileID: 4282279057587718482}
-  - component: {fileID: -8930348713109390301}
   - component: {fileID: 8244778711578700339}
   - component: {fileID: 2669072782492038803}
+  - component: {fileID: 4384052781956225373}
   m_Layer: 3
-  m_Name: YurikaTestPlayer
+  m_Name: InvertYurikaTestPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,8 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d3e46e4492a1940a2a8173cf9e5b4822, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b7a6bdf612007454c8b570cad2ed3e8a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -91,22 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!70 &4282279057587718483
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4282279057587718480}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
 --- !u!50 &4282279057587718482
 Rigidbody2D:
   serializedVersion: 4
@@ -128,48 +111,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-8930348713109390301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4282279057587718480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc79fcf0399b94f3db7007525be5f0b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 8
-  jumpForce: 29
-  grounded: 0
-  ground:
-    serializedVersion: 2
-    m_Bits: 64
-  groundCheckPoint: {fileID: 2990717131197031211}
-  groundCheckRadius: 0.2
-  bloodSr: {fileID: 5707226785865898720}
-  framesRightLeft:
-  - {fileID: 21300000, guid: f919a263ae558421598be044d7bec643, type: 3}
-  - {fileID: 21300000, guid: dde94c504d4d7459487a37ce5b559fd8, type: 3}
-  - {fileID: 21300000, guid: eef7e24d8cd954ed5806843e9c4a5591, type: 3}
-  - {fileID: 21300000, guid: 53508ea7c52b543fabbb66daf5491e26, type: 3}
-  - {fileID: 21300000, guid: 165869f54f2dc42e4829fccd1ce1c62e, type: 3}
-  - {fileID: 21300000, guid: 256fb392e0b9d43778ceccca117d7631, type: 3}
-  still: {fileID: 21300000, guid: d3e46e4492a1940a2a8173cf9e5b4822, type: 3}
-  jumpFall: {fileID: 21300000, guid: bf68a038484c94e5cae3af6a9ce57e5f, type: 3}
-  framesPerSecond: 5
-  framesBlood:
-  - {fileID: 21300000, guid: fe819843aad68475291037975d2913cc, type: 3}
-  - {fileID: 21300000, guid: 25579a0b282a64b939c3a05798c7f1c2, type: 3}
-  - {fileID: 21300000, guid: f3b38b18e50ab4b80a36fa8ec995252e, type: 3}
-  - {fileID: 21300000, guid: a80d62b228d14432ca4b50c6f7582afd, type: 3}
-  - {fileID: 21300000, guid: 29bb91879e6f3466b9cc7232c005b1dc, type: 3}
-  - {fileID: 21300000, guid: cd33f24eace0f49309d986b7b2c3015c, type: 3}
-  bloodSplash: {fileID: 787501009522325121, guid: 7b84d48dabf85483f9442de27b042cfc, type: 3}
-  jumpSound: {fileID: 8300000, guid: 6a758b8fc4260294b9be53cd1dbc961b, type: 3}
-  bloodSound: {fileID: 8300000, guid: 5039b4cd5f4a0714e9bb89037ca7b1db, type: 3}
-  backgroundSound: {fileID: 8300000, guid: 28efd7763824cba48b227ce24f72a32f, type: 3}
 --- !u!70 &8244778711578700339
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -282,6 +223,48 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4384052781956225373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4282279057587718480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f94cf15bcac549fbae15c1b09864f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 8
+  jumpForce: 29
+  grounded: 0
+  ground:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheckPoint: {fileID: 2990717131197031211}
+  groundCheckRadius: 0.2
+  bloodSr: {fileID: 5707226785865898720}
+  framesRightLeft:
+  - {fileID: 21300000, guid: 7e96fdba557b9416197316c641a330fa, type: 3}
+  - {fileID: 21300000, guid: 8921de05dae3c41ce889b2fe597a022c, type: 3}
+  - {fileID: 21300000, guid: b7130651adc56404a8f5c3b9c8aeb57d, type: 3}
+  - {fileID: 21300000, guid: b4d851cf93e4d4499b11f03c0529f5b6, type: 3}
+  - {fileID: 21300000, guid: 9161a1a5b53454dc4b236e11d70aaf33, type: 3}
+  - {fileID: 21300000, guid: 99ca76ed57a914f4d96ac5899974a808, type: 3}
+  still: {fileID: 21300000, guid: b7a6bdf612007454c8b570cad2ed3e8a, type: 3}
+  jumpFall: {fileID: 21300000, guid: 454e14f3c48534586ace093322523eef, type: 3}
+  framesPerSecond: 5
+  framesBlood:
+  - {fileID: 21300000, guid: fe819843aad68475291037975d2913cc, type: 3}
+  - {fileID: 21300000, guid: 25579a0b282a64b939c3a05798c7f1c2, type: 3}
+  - {fileID: 21300000, guid: f3b38b18e50ab4b80a36fa8ec995252e, type: 3}
+  - {fileID: 21300000, guid: a80d62b228d14432ca4b50c6f7582afd, type: 3}
+  - {fileID: 21300000, guid: 29bb91879e6f3466b9cc7232c005b1dc, type: 3}
+  - {fileID: 21300000, guid: cd33f24eace0f49309d986b7b2c3015c, type: 3}
+  bloodSplash: {fileID: 787501009522325121, guid: 7b84d48dabf85483f9442de27b042cfc, type: 3}
+  jumpSound: {fileID: 8300000, guid: 6a758b8fc4260294b9be53cd1dbc961b, type: 3}
+  bloodSound: {fileID: 8300000, guid: 5039b4cd5f4a0714e9bb89037ca7b1db, type: 3}
+  backgroundSound: {fileID: 8300000, guid: 28efd7763824cba48b227ce24f72a32f, type: 3}
 --- !u!1 &4883974941252115957
 GameObject:
   m_ObjectHideFlags: 0

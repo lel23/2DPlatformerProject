@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class YurikaPlayer : MonoBehaviour
+public class InvertYurikaPlayer : MonoBehaviour
 {
     public static float livesLost;
     private Vector3 startPos;
     private bool isDead;
-    public static bool isInSecretLevel;
+
+    public GameObject normalPlayer;
 
     // MOVEMMENT
     private Rigidbody2D rb2d;
@@ -51,7 +52,6 @@ public class YurikaPlayer : MonoBehaviour
 
         startPos = transform.position;
         livesLost = 0;
-        isInSecretLevel = false;
 
         frameTimer = (1f / framesPerSecond);
         currentFrameIndexLeftRight = 0;
@@ -93,8 +93,7 @@ public class YurikaPlayer : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.T)) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         ///////////// ANIMATION
-        if (livesLost >= 0 && livesLost <= 5)
-            bloodSr.sprite = framesBlood[(int)livesLost];
+        
         if (rb2d.velocity.x == 0 && rb2d.velocity.y == 0)
         {
             sr.sprite = still;
@@ -124,7 +123,6 @@ public class YurikaPlayer : MonoBehaviour
 
         // jumping animation
         if (!grounded) sr.sprite = jumpFall;
-
             
     }
 
@@ -143,23 +141,11 @@ public class YurikaPlayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Replenish"))
-        {
-            if (livesLost > 0)
-            {
-                livesLost--;
-                Destroy(other.gameObject);
-            }
-        }
-
-        if (other.gameObject.CompareTag("EnterSecret"))
-        {
-            isInSecretLevel = true;
-            
-        }
         if (other.gameObject.CompareTag("ExitSecret"))
         {
-            isInSecretLevel = false;
+            YurikaPlayer.isInSecretLevel = false;
+            normalPlayer.transform.position = new Vector3(-2.5f, 12.1f, 0);
+            transform.position = new Vector3(33.85f, 50.05f, 0);
         }
     }
 
@@ -168,7 +154,6 @@ public class YurikaPlayer : MonoBehaviour
         source.PlayOneShot(bloodSound);
 
         Instantiate(bloodSplash, transform.position, Quaternion.identity);
-        livesLost++;
 
         sr.enabled = false;
         bloodSr.enabled = false;
@@ -179,10 +164,5 @@ public class YurikaPlayer : MonoBehaviour
         transform.position = startPos;
 
         isDead = false;
-        if (livesLost > 5)
-        {
-            livesLost = 0;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
     }
 }
