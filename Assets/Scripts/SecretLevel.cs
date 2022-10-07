@@ -25,8 +25,6 @@ public class SecretLevel : MonoBehaviour
             normalCamera.SetActive(false);
             secretPlayer.SetActive(true);
             secretCamera.SetActive(true);
-
-            
             
         }
         else

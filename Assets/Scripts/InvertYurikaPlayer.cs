@@ -145,7 +145,7 @@ public class InvertYurikaPlayer : MonoBehaviour
         {
             YurikaPlayer.isInSecretLevel = false;
             normalPlayer.transform.position = new Vector3(-2.5f, 12.1f, 0);
-            transform.position = new Vector3(33.85f, 50.05f, 0);
+            transform.position = startPos;
         }
     }
 
@@ -154,15 +154,19 @@ public class InvertYurikaPlayer : MonoBehaviour
         source.PlayOneShot(bloodSound);
 
         Instantiate(bloodSplash, transform.position, Quaternion.identity);
+        //livesLost++;
 
         sr.enabled = false;
         bloodSr.enabled = false;
+        rb2d.bodyType = RigidbodyType2D.Static;
         yield return new WaitForSeconds(1);
 
         sr.enabled = true;
         bloodSr.enabled = true;
+        rb2d.bodyType = RigidbodyType2D.Dynamic;
         transform.position = startPos;
 
         isDead = false;
     }
+
 }

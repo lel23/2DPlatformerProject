@@ -20,7 +20,7 @@ public class Door : MonoBehaviour
 
         // temporary measure for a final level.
         // would want to load end scene or back to main menu
-        if (finalLevel) level = "Level1";
+        if (finalLevel) level = "MainMenu";
         else
         {
             float levelNumber = float.Parse(level.Substring(5)) + 1;
