@@ -7,6 +7,7 @@ public class CameraFollow : MonoBehaviour
     private Vector3 offset;
 
     public bool verticalOnly;
+    public bool stationary;
 
     void Start()
     {
@@ -15,7 +16,8 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        if (verticalOnly) transform.position = new Vector3(transform.position.x, player.transform.position.y + 3.5f, -10);
+        if (stationary) return;
+        if (verticalOnly) transform.position = new Vector3(transform.position.x, player.transform.position.y, -10);
         else transform.position = player.transform.position + offset;
     }
 }
