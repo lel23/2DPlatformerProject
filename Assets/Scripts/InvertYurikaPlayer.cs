@@ -42,7 +42,7 @@ public class InvertYurikaPlayer : MonoBehaviour
     private AudioSource source;
     public AudioClip jumpSound;
     public AudioClip bloodSound;
-    public AudioClip backgroundSound;
+    // public AudioClip backgroundSound;
 
     void Start()
     {
@@ -57,8 +57,8 @@ public class InvertYurikaPlayer : MonoBehaviour
         frameTimer = (1f / framesPerSecond);
         currentFrameIndexLeftRight = 0;
 
-        source.clip = backgroundSound;
-        source.Play();
+        //source.clip = backgroundSound;
+        //source.Play();
     }
 
     // Update is called once per frame
