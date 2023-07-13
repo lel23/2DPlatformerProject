@@ -9,34 +9,80 @@ public class Door : MonoBehaviour
     public bool finalLevel;
 
     private AudioSource source;
-    public AudioClip doorSound;
 
     void Start()
     {
         source = GetComponent<AudioSource>();
 
-        // splicing level name to automatically pull next level
-        level = SceneManager.GetActiveScene().name;
-
-        // temporary measure for a final level.
-        // would want to load end scene or back to main menu
         if (finalLevel) level = "MainMenu";
         else
         {
+            level = SceneManager.GetActiveScene().name;
             float levelNumber = float.Parse(level.Substring(5)) + 1;
             level = "Level" + levelNumber;
         }
 
-        Debug.Log(level);
+        if (gameObject.tag.Equals("EnterSecret"))
+        {
+
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            source.clip = doorSound;
-            source.Play();
-            SceneManager.LoadScene(level);
+            LPlayer player = other.GetComponent<LPlayer>();
+            if (gameObject.name.Equals("Door"))
+            {
+                player.isDead = true;
+                StartCoroutine(NextLevel());
+            }
+            else if (gameObject.name.Equals("SecretLevelDoor"))
+            {
+                GameObject entrance = GameObject.Find("EnterSecret");
+                StartCoroutine(TurnOffCollision(entrance.GetComponent<Collider2D>()));
+                Camera.main.backgroundColor = Color.black;
+
+                player.InOrOutSecret(entrance.transform.position);
+                player.transform.position = entrance.transform.position;
+            }
+            else if (gameObject.name.Equals("EnterSecret"))
+            {
+                GameObject secretEntrace = GameObject.Find("SecretLevelDoor");
+                StartCoroutine(TurnOffCollision(secretEntrace.GetComponent<Collider2D>()));
+                Camera.main.backgroundColor = Color.white;
+
+                player.InOrOutSecret(secretEntrace.transform.position);
+                player.transform.position = secretEntrace.transform.position;
+
+            }
+            else if (gameObject.name.Equals("ExitSecret"))
+            {
+                player.InOrOutSecret(transform.position);
+                player.PutOnHat();
+                player.transform.position = GameObject.Find("SecretLevelDoor").transform.position;
+                Camera.main.backgroundColor = Color.white;
+
+                GameObject secretEntrace = GameObject.Find("SecretLevelDoor");
+                StartCoroutine(TurnOffCollision(secretEntrace.GetComponent<Collider2D>()));
+            }
         }
+    }
+
+    IEnumerator TurnOffCollision(Collider2D door)
+    {
+        door.enabled = false;
+        yield return new WaitForSeconds(2);
+        door.enabled = true;
+
+    }
+
+    IEnumerator NextLevel()
+    {
+        source.Play();
+        yield return new WaitForSeconds(2.2f);
+        SceneManager.LoadScene(level);
+        Time.timeScale = 1f;
     }
 }

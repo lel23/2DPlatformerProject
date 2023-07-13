@@ -6,17 +6,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu: MonoBehaviour
 {
     public GameObject menuUI;
-    private AudioSource source;
-    public AudioClip splat;
-    public static bool paused = false;
+    bool paused = false;
 
-    void Start()
-    {
-        menuUI.gameObject.SetActive(false);
-        source = GetComponent<AudioSource>();
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -25,13 +16,12 @@ public class PauseMenu: MonoBehaviour
             else Pause();
         }
     }
-
     void Pause()
     {
         Debug.Log("pause!");
         paused = true;
         Time.timeScale = 0.0f;
-        menuUI.gameObject.SetActive(true);
+        menuUI.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
     }
 
     public void Resume()
@@ -39,7 +29,7 @@ public class PauseMenu: MonoBehaviour
         Debug.Log("resume!");
         paused = false;
         Time.timeScale = 1f;
-        menuUI.gameObject.SetActive(false);
+        menuUI.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(1000, 0);
     }
 
     public void MainMenu()
@@ -47,14 +37,12 @@ public class PauseMenu: MonoBehaviour
         Resume();
         Debug.Log("mainmenu!");
         SceneManager.LoadScene("MainMenu");
-        source.PlayOneShot(splat);
     }
 
     public void QuitGame()
     {
         Resume();
         Debug.Log("Quit!");
-        source.PlayOneShot(splat);
         Application.Quit();
     }
 }
