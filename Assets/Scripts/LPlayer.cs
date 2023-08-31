@@ -9,6 +9,8 @@ public class LPlayer : MonoBehaviour
     public float speed;
     public float jumpForce;
 
+    public FixedJoystick fixedJoystick; //ADDED for IOS
+
     [HideInInspector] public float livesLost = 0;
     [HideInInspector] public Vector3 startPos;
     Vector3 temp;
@@ -65,30 +67,33 @@ public class LPlayer : MonoBehaviour
         // movement and suicide
         if (!isDead)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
-            {
-                rb2d.AddForce(new Vector2(0, jumpForce));
-                source.clip = jumpSound;
-                source.Play();
-            }
+            //if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
+            //{
+            //    rb2d.AddForce(new Vector2(0, jumpForce));
+            //    source.clip = jumpSound;
+            //    source.Play();
+            //}
             if (onPlatform)
             {
                 Collider2D platform = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, platformMask);
                 Vector2 platformVel = platform.gameObject.transform.parent.GetComponent<Rigidbody2D>().velocity;
                 rb2d.velocity += platformVel;
             }
-            rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-            if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
-                rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
-            else if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
-                rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
 
-            // suicide
-            if (Input.GetKey(KeyCode.Space))
-            {
-                isDead = true;
-                StartCoroutine(OnDeath());
-            }
+            rb2d.velocity = new Vector2(fixedJoystick.Horizontal * speed, rb2d.velocity.y);
+
+            //rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+            //if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+            //    rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
+            //else if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
+            //    rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
+
+            //// suicide
+            //if (Input.GetKey(KeyCode.Space))
+            //{
+            //    isDead = true;
+            //    StartCoroutine(OnDeath());
+            //}
         }
         
         // animation
@@ -124,6 +129,24 @@ public class LPlayer : MonoBehaviour
         }
         if (!grounded) sr.sprite = jump;
     }
+
+    // ADDED FOR IOS
+    public void Jump()
+    {
+        if (!isDead && grounded)
+        {
+            rb2d.AddForce(new Vector2(0, jumpForce));
+            source.clip = jumpSound;
+            source.Play();
+        }
+    }
+
+    public void Suicide()
+    {
+        isDead = true;
+        StartCoroutine(OnDeath());
+    }
+    // END ADDED FOR IOS
 
     private void OnCollisionEnter2D(Collision2D other)
     {

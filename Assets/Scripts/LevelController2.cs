@@ -7,28 +7,31 @@ public class LevelController2 : MonoBehaviour
 {
     public GameObject platform1;
     public GameObject platform2;
-    public Image spaceKeyImg;
+    public GameObject arrow;
+    public GameObject deathBtn;
 
     void Start()
     {
         platform1.SetActive(false);
         platform2.SetActive(false);
+        deathBtn.SetActive(false);
 
-        spaceKeyImg.color = new Color(1, 1, 1, 0);
+        arrow.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
 
         StartCoroutine(FadeInInstruction());
     }
 
     IEnumerator FadeInInstruction()
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(6);
 
         platform1.SetActive(true);
         platform2.SetActive(true);
+        deathBtn.SetActive(true);
 
         for (float i = 0; i <= 3; i += Time.deltaTime)
         {
-            spaceKeyImg.color = new Color(1, 1, 1, i);
+            arrow.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, i);
             yield return null;
         }
 
