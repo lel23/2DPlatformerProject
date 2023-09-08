@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Door : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Door : MonoBehaviour
     public bool finalLevel;
 
     private AudioSource source;
+
 
     void Start()
     {
@@ -30,6 +32,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.gameObject.CompareTag("Player"))
         {
             LPlayer player = other.GetComponent<LPlayer>();
@@ -46,12 +49,20 @@ public class Door : MonoBehaviour
 
                 player.InOrOutSecret(entrance.transform.position);
                 player.transform.position = entrance.transform.position;
+
+                GameObject.Find("SecretControls").GetComponent<Canvas>().sortingOrder = 1; // FOR MOBILE
+                GameObject.Find("Fixed Joystick").GetComponent<Image>().color = Color.white;
+                GameObject.Find("Handle").GetComponent<Image>().color = Color.white;
             }
             else if (gameObject.name.Equals("EnterSecret"))
             {
                 GameObject secretEntrace = GameObject.Find("SecretLevelDoor");
                 StartCoroutine(TurnOffCollision(secretEntrace.GetComponent<Collider2D>()));
                 Camera.main.backgroundColor = Color.white;
+
+                GameObject.Find("SecretControls").GetComponent<Canvas>().sortingOrder = 0; // FOR MOBILE
+                GameObject.Find("Fixed Joystick").GetComponent<Image>().color = Color.black;
+                GameObject.Find("Handle").GetComponent<Image>().color = Color.black;
 
                 player.InOrOutSecret(secretEntrace.transform.position);
                 player.transform.position = secretEntrace.transform.position;
@@ -63,6 +74,10 @@ public class Door : MonoBehaviour
                 player.PutOnHat();
                 player.transform.position = GameObject.Find("SecretLevelDoor").transform.position;
                 Camera.main.backgroundColor = Color.white;
+
+                GameObject.Find("SecretControls").GetComponent<Canvas>().sortingOrder = 0; // FOR MOBILE
+                GameObject.Find("Fixed Joystick").GetComponent<Image>().color = Color.black;
+                GameObject.Find("Handle").GetComponent<Image>().color = Color.black;
 
                 GameObject secretEntrace = GameObject.Find("SecretLevelDoor");
                 StartCoroutine(TurnOffCollision(secretEntrace.GetComponent<Collider2D>()));
