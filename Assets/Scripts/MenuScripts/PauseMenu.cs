@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+//using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,33 +20,46 @@ public class PauseMenu: MonoBehaviour
     //}
     public void Pause()
     {
-        Debug.Log("pause!");
+        //Debug.Log("pause!");
         //paused = true;
         Time.timeScale = 0.0f;
         menuUI.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
         controlUI.SetActive(false);
+
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "Level5")
+        {
+            GameObject.Find("SecretControls").GetComponent<Canvas>().enabled = false;
+        }
     }
 
     public void Resume()
     {
-        Debug.Log("resume!");
+        //Debug.Log("resume!");
         //paused = false;
         Time.timeScale = 1f;
         menuUI.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(1000, 0);
         controlUI.SetActive(true);
+
+        Scene scene = SceneManager.GetActiveScene();
+        Debug.Log(scene.name);
+        if (scene.name == "Level5")
+        {
+            GameObject.Find("SecretControls").GetComponent<Canvas>().enabled = true;
+        }
     }
 
     public void MainMenu()
     {
         Resume();
-        Debug.Log("mainmenu!");
+        //Debug.Log("mainmenu!");
         SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()
     {
         Resume();
-        Debug.Log("Quit!");
+        //Debug.Log("Quit!");
         Application.Quit();
     }
 }

@@ -60,7 +60,7 @@ public class Door : MonoBehaviour
                 StartCoroutine(TurnOffCollision(secretEntrace.GetComponent<Collider2D>()));
                 Camera.main.backgroundColor = Color.white;
 
-                GameObject.Find("SecretControls").GetComponent<Canvas>().sortingOrder = 0; // FOR MOBILE
+                GameObject.Find("SecretControls").GetComponent<Canvas>().sortingOrder = -1; // FOR MOBILE
                 GameObject.Find("Fixed Joystick").GetComponent<Image>().color = Color.black;
                 GameObject.Find("Handle").GetComponent<Image>().color = Color.black;
 
@@ -75,7 +75,7 @@ public class Door : MonoBehaviour
                 player.transform.position = GameObject.Find("SecretLevelDoor").transform.position;
                 Camera.main.backgroundColor = Color.white;
 
-                GameObject.Find("SecretControls").GetComponent<Canvas>().sortingOrder = 0; // FOR MOBILE
+                GameObject.Find("SecretControls").GetComponent<Canvas>().sortingOrder = 1; // FOR MOBILE
                 GameObject.Find("Fixed Joystick").GetComponent<Image>().color = Color.black;
                 GameObject.Find("Handle").GetComponent<Image>().color = Color.black;
 
